@@ -1,0 +1,24 @@
+<div class="addform" id="addform" style="display: none">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="card my-3">
+                    <div class="card-header">
+                        <h2 style="float: left">Добавление записи</h2>
+                        <button class="btn btn-danger" style="position: absolute; right: 20px;" onclick="addTaskFormClose()">✖︎</button></p>
+                    </div>
+                    <div class="card-body">
+
+                        <form method="post" action="{% url 'main:task_detail' task.id task.slug %}?next={{ request.get_full_path }}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <p align="right" style="margin: 0">
+                                <input type="submit" class="btn btn-success" value="Добавить">
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="card my-3">
+    <div class="card-header"><p style="margin: 0; width: 50%; float: left; font-size: 35px" align="left">{{ event.title }}</p>
+        {% if not event.status %}
+            <p align="right" style="margin: 0; width: 50%; float: left"><a href="/success-event/{{ event.id }}/?next={{ request.get_full_path }}" class="btn btn-warning">Завершить</a></p>
+        {% else %}
+            <p align="right" style="margin: 0; width: 50%; float: left"><button href="#" class="btn btn-warning" disabled>Завершено</button></p>
+        {% endif %}
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{ event.description }}</p>
+    </div>
+    <p class="card-footer" align="right" style="margin: 0"> {{ event.term }} </p>
+</div>

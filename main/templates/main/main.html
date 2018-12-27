@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'parts/addtask.html' %}
+    <div class="container my-4" style="margin-bottom: calc(120px + 3rem)!important;">
+        <div class="col-8 offset-2">
+            <button onclick="addTaskFormOpen()" class="btn btn-light btn-lg btn-block addevent-btn">+ Добавить</button>
+            <div class="infinite-container">
+                {% for task in object_list %}
+                    <div class="infinite-item">
+                    {% include 'parts/task.html' %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="loading" style="text-align: center;display: none;">
+            Загрузка...
+        </div>
+        {% if page_obj.has_next %}
+            <a class="infinite-more-link d-none" href="?page={{ page_obj.next_page_number }}">Еще</a>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+    function addTaskFormClose() {
+        document.getElementById('addform').style.display = 'none';
+    }
+    function addTaskFormOpen() {
+        document.getElementById('addform').style.display = 'block';
+    }
+    document.getElementById('id_created').readOnly = true;
+    let infinite = new Waypoint.Infinite({
+            element: $('.infinite-container')[0],
+            onBeforePageLoad: function () {
+                $('.loading').show();
+            },
+            onAfterPageLoad: function ($items) {
+                $('.loading').hide();
+            }
+    });
+    </script>
+{% endblock %}

@@ -1,0 +1,9 @@
+<a href="{{ task.get_absolute_url }}" class="event">
+    <div class="card my-3">
+        <h1 class="card-header">{{ task.title }}</h1>
+        <div class="card-body">
+            <p class="card-text">{{ task.description }}</p>
+        </div>
+        <p class="card-footer" align="right" style="margin: 0"> {{ task.created }} </p>
+    </div>
+</a>

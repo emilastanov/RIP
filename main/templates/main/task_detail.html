@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'parts/addevent.html' %}
+    <div class="container my-4" >
+        <div class="col-8 offset-2">
+            <h1>{{ task.title }}</h1>
+            <p>{{ task.description }}</p>
+            <div class="progress my-3">
+                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{ progress.len }}%" aria-valuenow="{{ progress.success }}" aria-valuemin="0" aria-valuemax="{{ progress.all }}"></div>
+            </div>
+            <button onclick="addTaskFormOpen()" class="btn btn-light btn-lg btn-block addevent-btn">+ Добавить</button>
+        </div>
+    </div>
+    <div class="container events my-2" style="margin-bottom: calc(120px + 3rem)!important;">
+        <div class="col-8 offset-2 infinite-container">
+            {% for event in events %}
+                <div class="infinite-item">
+                {% include 'parts/event.html' %}
+                </div>
+            {% empty %}
+                <p style="text-align: center;">Добавьте задачу...</p>
+            {% endfor %}
+        </div>
+        <div class="loading" style="text-align: center;display: none;">
+            Загрузка...
+        </div>
+        {% if page_obj.has_next %}
+            <a class="infinite-more-link d-none" href="?page={{ page_obj.next_page_number }}">Еще</a>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+    function addTaskFormClose() {
+        document.getElementById('addform').style.display = 'none';
+    }
+    function addTaskFormOpen() {
+        document.getElementById('addform').style.display = 'block';
+    }
+    let infinite = new Waypoint.Infinite({
+            element: $('.infinite-container')[0],
+            onBeforePageLoad: function () {
+                $('.loading').show();
+            },
+            onAfterPageLoad: function ($items) {
+                $('.loading').hide();
+            }
+    });
+    document.getElementById('id_event').value = {{ task.id }};
+    document.getElementById('id_title').value = '';
+    document.getElementById('id_description').value = '';
+    date = new Date();
+    mnth = parseInt(date.getMonth())+1;
+    document.getElementById('id_term').value = date.getDate() +'.' + mnth + '.' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+
+    </script>
+{% endblock %}
