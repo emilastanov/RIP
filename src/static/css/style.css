@@ -1,0 +1,23 @@
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 27px;
+    background: #FAFDFD;
+}
+
+span.input-group-text {
+    font-size: 24px;
+    padding: 0 10px;
+}
+input[type='text'] {
+    font-size: 22px;
+}
+
+.search_block {
+    max-width: 500px;
+}
+.avatar {
+	width: 200px;
+	float: right;
+	border-radius: 100px;
+	box-shadow: 2px 2px 3px black;
+}
