@@ -9,7 +9,7 @@
                     </div>
                     <div class="card-body">
 
-                        <form method="post" action="{% url 'main:home' %}">
+                        <form method="post" action="{% url 'main:home' %}" id="addtask">
                             {% csrf_token %}
                             {{ form.as_p }}
                             <p align="right" style="margin: 0">

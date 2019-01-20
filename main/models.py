@@ -48,4 +48,4 @@ class Events(models.Model):
         verbose_name_plural = 'События'
 
     def __str__(self):
-        return "Событие: {0}".format(self.title)
+        return "Событие: {0} ({1})".format(self.title,self.event.title)
