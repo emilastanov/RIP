@@ -6,4 +6,4 @@
 4. [Лаб 4-5](https://github.com/emilastanov/RIP/tree/lab4-5 "Лаб 4-5")
 5. [Лаб 6](https://github.com/emilastanov/RIP/tree/lab6 "Лаб 6")
 6. [Домашнее задание](https://github.com/emilastanov/RIP/tree/dz "ДЗ")
-
+Testik
